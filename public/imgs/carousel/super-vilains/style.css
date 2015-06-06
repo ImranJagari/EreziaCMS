@@ -1,0 +1,7 @@
+body {
+    background: url("background.jpg") no-repeat scroll center top #19181d;
+}
+
+#header #logo {
+    margin-top: 150px;
+}
