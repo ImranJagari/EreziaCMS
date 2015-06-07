@@ -42,7 +42,7 @@ $router->group(['prefix' => $locale], function() {
 
 	/* ACCOUNTS */
 
-	Route::resource('accounts', 'AccountsController');
+	Route::resource('accounts', 'AccountsController'); // NEED ONLY ARRAY
 
 	Route::get(Lang::get('routes.account.register'), [
 		'uses' => 'AccountsController@create',
@@ -64,22 +64,22 @@ $router->group(['prefix' => $locale], function() {
 	/* SHOP */
 
 	Route::get(Lang::get('routes.shop.payment.choose-country'), [
-		//'before' => 'auth',
+		'middleware' => 'auth',
 		'uses'   => 'PaymentController@country',
 		'as'     => 'shop.payment.country'
 	]);
 	Route::get(Lang::get('routes.shop.payment.choose-method'), [
-		//'before' => 'auth',
+		'middleware' => 'auth',
 		'uses'   => 'PaymentController@method',
 		'as'     => 'shop.payment.method'
 	]);
 	Route::any(Lang::get('routes.shop.payment.get-code'), [
-		//'before' => 'auth',
+		'middleware' => 'auth',
 		'uses'   => 'PaymentController@code',
 		'as'     => 'shop.payment.code'
 	]);
 	Route::post(Lang::get('routes.shop.payment.process'), [
-		//'before' => 'auth',
+		'middleware' => 'auth',
 		'uses'   => 'PaymentController@process',
 		'as'     => 'shop.payment.process'
 	]);
@@ -91,17 +91,17 @@ $router->group(['prefix' => $locale], function() {
 		'as'     => 'vote.index'
 	]);
 	Route::get(Lang::get('routes.vote.process'), [
-		//'before' => 'auth',
+		'middleware' => 'auth',
 		'uses'   => 'VoteController@process',
 		'as'     => 'vote.process'
 	]);
 	Route::get(Lang::get('routes.vote.palier'), [
-		//'before' => 'auth',
+		'middleware' => 'auth',
 		'uses'   => 'VoteController@palier',
 		'as'     => 'vote.palier'
 	]);
 	Route::get(Lang::get('routes.vote.object'), [
-		//'before' => 'auth',
+		'middleware' => 'auth',
 		'uses'   => 'VoteController@object',
 		'as'     => 'vote.object'
 	]);
@@ -109,7 +109,7 @@ $router->group(['prefix' => $locale], function() {
 	/* EVENTS */
 
 	Route::get(Lang::get('routes.event.st-patrick'), [
-		//'before' => 'auth',
+		'middleware' => 'auth',
 		'uses'   => 'EventController@st_patrick',
 		'as'     => 'event.st-patrick'
 	]);
@@ -117,16 +117,19 @@ $router->group(['prefix' => $locale], function() {
 	/* PAYPAL */
 
 	Route::get('paypal', [
+		'middleware' => 'auth',
 		'uses'	=> 'PaypalController@index',
 		'as'	=> 'paypal'
 	]);
 
 	Route::get('paypal/success', [
+		'middleware' => 'auth',
 		'uses'	=> 'PaypalController@success',
 		'as'	=> 'paypal.success'
 	]);
 
 	Route::get('paypal/cancel', [
+		'middleware' => 'auth',
 		'uses'	=> 'PaypalController@cancel',
 		'as'	=> 'paypal.cancel'
 	]);
