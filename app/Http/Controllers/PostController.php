@@ -2,9 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Request;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use \Cache;
-
+use App\Services\Pagination;
 use App\Post;
 use App\Comment;
 
@@ -22,9 +23,11 @@ class PostController extends Controller {
 		}
 		else
 		{
-			$posts = Post::orderBy('date', 'desc')->paginate(self::POSTS_PER_PAGE);
+			$posts = Post::orderBy('date', 'desc')->get();
 			Cache::add('posts', $posts, self::CACHE_EXPIRE_MINUTES);
 		}
+
+		$posts = Pagination::make($posts->all(), count($posts), self::POSTS_PER_PAGE, Request::input('page', 1));
 
 		return view('posts.index', compact('posts'));
 	}
@@ -47,9 +50,11 @@ class PostController extends Controller {
 		}
 		else
 		{
-			$comments = Comment::where('post_id', $id)->orderBy('date', 'desc')->paginate(self::COMMENTS_PER_PAGE);
+			$comments = Comment::where('post_id', $id)->orderBy('date', 'desc')->get();
 			Cache::add("posts.$id.comments", $comments, self::CACHE_EXPIRE_MINUTES);
 		}
+
+		$comments = Pagination::make($comments->all(), count($comments), self::COMMENTS_PER_PAGE, Request::input('page', 1));
 
 		return view('posts.show', compact('post', 'comments'));
 	}
