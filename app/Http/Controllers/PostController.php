@@ -3,7 +3,6 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Request;
-use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use \Cache;
 use App\Services\Pagination;
 use App\Post;
