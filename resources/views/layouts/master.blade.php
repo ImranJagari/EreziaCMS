@@ -18,16 +18,18 @@
     <div id="header">
         <div class="container">
             <div id="menu">
-                <ul>
+                <ul class="box left">
                     <li><a href="{{ URL::route('home') }}">{{ config('dofus.title') }}</a></li>
                     <li><a href="{{ URL::route('register') }}">Rejoindre</a></li>
                     <li><a href="{{ URL::to('server') }}">Serveur</a></li>
+                </ul>
+                <a href="{{ URL::route('home') }}"><div id="logo"></div></a>
+                <ul class="box right">
                     <li><a href="{{ URL::to('events') }}">Tournois</a></li>
                     <li><a href="http://forum.erezia.net/">Forum</a></li>
                     <li><a href="{{ URL::to('support') }}">Support</a></li>
                 </ul>
             </div>
-            <a href="{{ URL::route('home') }}"><div id="logo"></div></a>
         </div>
     </div>
 
