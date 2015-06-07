@@ -114,4 +114,21 @@ $router->group(['prefix' => $locale], function() {
 		'as'     => 'event.st-patrick'
 	]);
 
+	/* PAYPAL */
+
+	Route::get('paypal', [
+		'uses'	=> 'PaypalController@index',
+		'as'	=> 'paypal'
+	]);
+
+	Route::get('paypal/success', [
+		'uses'	=> 'PaypalController@success',
+		'as'	=> 'paypal.success'
+	]);
+
+	Route::get('paypal/cancel', [
+		'uses'	=> 'PaypalController@cancel',
+		'as'	=> 'paypal.cancel'
+	]);
+
 });
