@@ -45,19 +45,22 @@ $router->group(['prefix' => $locale], function() {
 	Route::resource('accounts', 'AccountsController'); // NEED ONLY ARRAY
 
 	Route::get(Lang::get('routes.account.register'), [
-		'uses' => 'AccountsController@create',
+		'uses' => 'AccountController@create',
 		'as'   => 'register'
 	]);
+
+	/* AUTH */
+
 	Route::get(Lang::get('routes.account.login'), [
-		'uses' => 'AccountsController@auth',
+		'uses' => 'AuthController@auth',
 		'as'   => 'login'
 	]);
 	Route::post(Lang::get('routes.account.login'), [
-		'uses' => 'AccountsController@login',
+		'uses' => 'AuthController@login',
 		'as'   => 'login'
 	]);
 	Route::get(Lang::get('routes.account.logout'), [
-		'uses' => 'AccountsController@logout',
+		'uses' => 'AuthController@logout',
 		'as'   => 'logout'
 	]);
 
