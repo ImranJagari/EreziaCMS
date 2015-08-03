@@ -1,8 +1,12 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class Account extends Model {
+class Account extends Model implements AuthenticatableContract {
+
+	use Authenticatable;
 
 	protected $primaryKey = 'Id';
 
