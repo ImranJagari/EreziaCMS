@@ -42,7 +42,7 @@ $router->group(['prefix' => $locale], function() {
 
 	/* ACCOUNTS */
 
-	Route::resource('accounts', 'AccountsController'); // NEED ONLY ARRAY
+	Route::resource('accounts', 'AccountController'); // NEED ONLY ARRAY
 
 	Route::get(Lang::get('routes.account.register'), [
 		'uses' => 'AccountController@create',

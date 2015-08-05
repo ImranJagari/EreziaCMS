@@ -135,4 +135,6 @@ return [
         "size" => "Taille",
     ],
 
+    'recaptcha' => "Le champ :attribute n'est pas correcte.",
+
 ];

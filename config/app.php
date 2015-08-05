@@ -147,6 +147,11 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+		/*
+		 * 3rd Party Providers
+		 */
+		'Greggilbert\Recaptcha\RecaptchaServiceProvider',
+
 	],
 
 	/*
@@ -196,6 +201,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'Html'		=> 'Illuminate\Html\HtmlFacade',
+		'Recaptcha' => 'Greggilbert\Recaptcha\Facades\Recaptcha',
 
 	],
 
