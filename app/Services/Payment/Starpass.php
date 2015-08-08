@@ -11,7 +11,7 @@ class Starpass extends Payment
 
     }
 
-    public function palier($id)
+    public function palier($country, $method, $palier)
     {
 
     }

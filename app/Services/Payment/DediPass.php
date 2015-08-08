@@ -80,6 +80,41 @@ class DediPass extends Payment
 
     public function check($palier, $code)
     {
+        $check = new \stdClass;
+        $check->code = $code;
+        $check->error = false;
 
+        $key        = config('dofus.payment.dedipass.key');
+        $validation = config('dofus.payment.dedipass.validation');
+
+        $validation = str_replace('{KEY}', $key, $validation);
+        $validation = str_replace('{PALIER}', $palier, $validation);
+        $validation = str_replace('{CODE}', $code, $validation);
+
+        $result = @file_get_contents($validation);
+
+        $check->provider = config('dofus.payment.dedipass.name');
+
+        $result = json_decode($result);
+
+        if ($result->status == "success")
+        {
+            $check->success = true;
+
+            $identifier = explode('-', $result->identifier);
+
+            $check->country     = strtolower($identifier[1]);
+            $check->palier_name = $result->identifier;
+            $check->palier_id   = 0;
+            $check->type        = strtolower($identifier[2]);
+            $check->points      = $identifier[3];
+        }
+        else
+        {
+            $check->message = $result->message;
+            $check->success = false;
+        }
+
+        return $check;
     }
 }
