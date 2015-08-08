@@ -176,11 +176,3 @@ body {
     min-width: 50px;
     direction: ltr;
 }
-
-#header .container {
-    width: 1500px;
-}
-
-#header #logo {
-    margin-left: 800px !important;
-}
