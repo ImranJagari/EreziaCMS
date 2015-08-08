@@ -15,7 +15,7 @@ class VoteController extends Controller
     public function index()
     {
         if(Auth::guest())
-            return view('votes.guest');
+            return view('vote.guest');
 
         $palierId   = $this->palierId();
         $votesCount = $this->userVotes();
@@ -37,7 +37,7 @@ class VoteController extends Controller
             "delay"      => $delay,
         ];
 
-        return view('votes.index', $data);
+        return view('vote.index', $data);
     }
 
     public function process()
@@ -82,7 +82,7 @@ class VoteController extends Controller
             "current"  => $current,
         );
 
-        return view('votes.paliers', $data);
+        return view('vote.paliers', $data);
     }
 
     public function object($item)

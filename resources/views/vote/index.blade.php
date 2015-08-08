@@ -54,7 +54,7 @@
                 <div data="5">5<sup>ème</sup> Palier</div>
             </div>
             <div class="right">
-@include('votes.paliers')
+@include('vote.paliers')
             </div>
             <div class="loadmask"></div>
             <div class="loading"></div>
