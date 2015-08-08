@@ -19,8 +19,8 @@ use PayPal\Api\Transaction;
 use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 
-class PaypalController extends Controller {
-
+class PaypalController extends Controller
+{
 	private $apiContext;
 
 	public function __construct()
@@ -120,5 +120,4 @@ class PaypalController extends Controller {
 	{
 		die("cancel");
 	}
-
 }

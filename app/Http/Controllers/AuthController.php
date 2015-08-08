@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Account;
 use Auth;
 
-class AuthController extends Controller {
-
+class AuthController extends Controller
+{
 	public function __construct()
 	{
 		$this->middleware('guest', ['except' => 'logout']);
@@ -42,5 +42,4 @@ class AuthController extends Controller {
 
 		return redirect('/');
 	}
-
 }

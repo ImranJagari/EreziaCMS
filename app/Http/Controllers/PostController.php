@@ -8,8 +8,8 @@ use App\Services\Pagination;
 use App\Post;
 use App\Comment;
 
-class PostController extends Controller {
-
+class PostController extends Controller
+{
 	const CACHE_EXPIRE_MINUTES = 10;
 	const POSTS_PER_PAGE = 6;
 	const COMMENTS_PER_PAGE = 10;
@@ -57,5 +57,4 @@ class PostController extends Controller {
 
 		return view('posts.show', compact('post', 'comments'));
 	}
-
 }

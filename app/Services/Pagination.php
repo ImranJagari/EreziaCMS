@@ -3,20 +3,19 @@
 //use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
-class Pagination {
-
+class Pagination
+{
     public static function make($items, $total, $perPage, $currentPage)
     {
-		$offSet = ($currentPage * $perPage) - $perPage;
-		$itemsForCurrentPage = array_slice($items, $offSet, $perPage, true);
+        $offSet = ($currentPage * $perPage) - $perPage;
+        $itemsForCurrentPage = array_slice($items, $offSet, $perPage, true);
 
-		return new Paginator(
-			$itemsForCurrentPage,
+        return new Paginator(
+            $itemsForCurrentPage,
             $total,
             $perPage,
-			Paginator::resolveCurrentPage(),
-			['path' => Paginator::resolveCurrentPath()]
-		);
+            Paginator::resolveCurrentPage(),
+            ['path' => Paginator::resolveCurrentPath()]
+        );
     }
-
 }

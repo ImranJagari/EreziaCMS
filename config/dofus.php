@@ -42,7 +42,7 @@ return [
 
     'rpg-paradize' => [
         'id'   => env('RPG_PARADIZE', 0),
-        'time' => 7205, // 3h + 5s
+        'delay' => 10810, // 3h + 5s
     ],
 
     'web-api' => 'http://api.voidmx.net/',

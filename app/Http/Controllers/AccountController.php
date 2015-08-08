@@ -8,8 +8,8 @@ use App;
 use Auth;
 use Validator;
 
-class AccountController extends Controller {
-
+class AccountController extends Controller
+{
     public function create()
     {
         return view('accounts.create');
@@ -73,5 +73,4 @@ class AccountController extends Controller {
         }
         return $ticket;
     }
-
 }
