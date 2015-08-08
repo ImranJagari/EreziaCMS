@@ -73,9 +73,9 @@ class DediPass extends Payment
         return $this->rates;
     }
 
-    public function palier($id)
+    public function palier($country, $method, $palier)
     {
-
+        return $this->rates->$country->$method->$palier;
     }
 
     public function check($palier, $code)

@@ -12,7 +12,7 @@
         </h1>
 
         <div class="shop">
-            {!! Form::open(array('route' => 'shop.payment.code')) !!}
+            {!! Form::open(['route' => 'shop.payment.code']) !!}
                 <input type="hidden" name="country" value="{{ $country }}" />
                 <div class="shop-content">
                     <div class="title">
