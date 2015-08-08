@@ -30,4 +30,24 @@ class PaymentController extends Controller
     {
         return view('shop.payment.country', ['rates' => $this->payment->rates()]);
     }
+
+    public function method($country = 'fr')
+    {
+        if (isset($this->payment->$country))
+        {
+            $methods = $this->payment->rates()->$country;
+        }
+        else
+        {
+            $methods = $this->payment->rates()->fr;
+            $country = 'fr';
+        }
+
+        return view('shop.payment.method', ['methods' => $methods, 'country' => $country]);
+    }
+
+    public function code()
+    {
+
+    }
 }

@@ -10,6 +10,8 @@ return [
 
     'vote' => 10,
 
+    'promos' => [],
+
     'payment' => [
 
         'used' => env('PAYMENT', 'dedipass'),
