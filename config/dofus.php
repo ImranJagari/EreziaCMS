@@ -26,16 +26,14 @@ return [
             "name"       => 'OneoPay',
             'url'        => 'http://oneopay.com/api/rates.php?service=15',
             'validation' => 'https://oneopay.com/api/checkcode.php?service=1&rate={PALIER}&code={CODE}',
-            'id'         => env('PAYMENT_PUBLIC', 0),
-            'secret'     => env('PAYMENT_PRIVATE', 0),
+            'key'        => env('PAYMENT_PUBLIC', 0),
         ],
 
         'dedipass' => [
             "name"       => 'DediPass',
-            'url'        => '',
-            'validation' => '',
-            'id'         => env('PAYMENT_PUBLIC', 0),
-            'secret'     => env('PAYMENT_PRIVATE', 0),
+            'url'        => 'https://buy.buycode.eu/v1/pay/rates?key={KEY}',
+            'validation' => 'http://api.dedipass.com/v1/pay/?key={KEY}&rate={PALIER}&code={CODE}',
+            'key'        => env('PAYMENT_PUBLIC', 0),
         ],
 
     ],

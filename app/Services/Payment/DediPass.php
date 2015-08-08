@@ -1,0 +1,85 @@
+<?php
+
+namespace App\Services\Payment;
+
+use \Cache;
+use App\Services\Payment;
+
+class DediPass extends Payment
+{
+    private $rates;
+
+    const CACHE_EXPIRE_MINUTES = 1440; // 1 day
+
+    public function __construct()
+    {
+        $json = null;
+
+        if (Cache::has('payment.dedipass'))
+        {
+            $json = Cache::get('payment.dedipass');
+        }
+        else
+        {
+            $url = config('dofus.payment.dedipass.url');
+            $url = str_replace('{KEY}', config('dofus.payment.dedipass.key'), $url);
+            $json = json_decode(file_get_contents($url));
+
+            Cache::add('payment.dedipass', $json, self::CACHE_EXPIRE_MINUTES);
+        }
+
+        $this->rates = new \stdClass;
+
+        foreach ($json as $method)
+        {
+            $countryName = strtolower($method->country->iso);
+            $methodName  = strtolower($method->solution);
+            $palier      = $method->rate;
+
+            if (!property_exists($this->rates, $countryName))
+            {
+                $this->rates->$countryName = new \stdClass;
+            }
+
+            if (!property_exists($this->rates->$countryName, $methodName))
+            {
+                $this->rates->$countryName->$methodName = new \stdClass;
+            }
+
+            $newMethod = new \stdClass;
+
+            $newMethod->devise = $method->user_currency == "EUR" ? "&euro;" : $method->user_currency;
+            $newMethod->text   = $method->mention;
+            $newMethod->cost   = $method->user_price . " " . $newMethod->devise;
+            $newMethod->points = $method->user_earns;
+
+            if ($methodName == "sms")
+            {
+                $newMethod->number  = $method->shortcode;
+                $newMethod->keyword = $method->keyword;
+            }
+
+            if ($methodName == "audiotel" )
+            {
+                $newMethod->number = $method->phone;
+            }
+
+            $this->rates->$countryName->$methodName->$palier = $newMethod;
+        }
+    }
+
+    public function rates()
+    {
+        return $this->rates;
+    }
+
+    public function palier($id)
+    {
+
+    }
+
+    public function check($palier, $code)
+    {
+
+    }
+}
