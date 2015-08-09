@@ -138,3 +138,12 @@ $router->group(['prefix' => $locale], function() {
 	]);
 
 });
+
+/* API */
+
+Route::get('api/forge/{request}', 'Api\ForgeController@forge')->where('request', '(.*)');
+Route::get('api/text/{id}', 'Api\ForgeController@text')->where('id', '[0-9]+');
+
+Route::post('game/authentification.json', 'Api\AccountController@auth');
+Route::post('game/account.json', 'Api\AccountController@info');
+Route::post('game/shop.json', 'Api\ShopController@shop');

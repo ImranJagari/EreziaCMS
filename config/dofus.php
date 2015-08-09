@@ -45,6 +45,11 @@ return [
         'delay' => 10810, // 3h + 5s
     ],
 
-    'web-api' => 'http://api.voidmx.net/',
+    'web-api' => 'http://127.0.0.1/EreziaCMS/public/api/',
+
+    'shop' => [
+        'host' => gethostbyname('voidmx.net'),
+        'port' => 7002,
+    ],
 
 ];
