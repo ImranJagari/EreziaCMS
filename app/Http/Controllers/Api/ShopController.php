@@ -377,11 +377,11 @@ class ShopController extends ApiController
 
     private function hightlight_carousel()
     {
-        return json_decode(file_get_contents("SHOP/0_HOME/hightlight_carousel.json"));
+        return json_decode(file_get_contents("SHOP/hightlight_carousel.json"));
     }
 
     private function hightlight_image()
     {
-        return json_decode(file_get_contents("SHOP/0_HOME/hightlight_image.json"));
+        return json_decode(file_get_contents("SHOP/hightlight_image.json"));
     }
 }
