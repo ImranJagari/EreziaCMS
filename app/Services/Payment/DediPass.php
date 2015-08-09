@@ -87,14 +87,13 @@ class DediPass extends Payment
         $key        = config('dofus.payment.dedipass.key');
         $validation = config('dofus.payment.dedipass.validation');
 
-        $validation = str_replace('{KEY}', $key, $validation);
+        $validation = str_replace('{KEY}',    $key,    $validation);
         $validation = str_replace('{PALIER}', $palier, $validation);
-        $validation = str_replace('{CODE}', $code, $validation);
-
-        $result = @file_get_contents($validation);
+        $validation = str_replace('{CODE}',   $code,   $validation);
 
         $check->provider = config('dofus.payment.dedipass.name');
 
+        $result = @file_get_contents($validation);
         $result = json_decode($result);
 
         if ($result->status == "success")

@@ -19,7 +19,7 @@ return [
         'starpass' => [
             "name"       => 'Starpass',
             'url'        => 'starpass.json',
-            'validation' => 'http://script.starpass.fr/check_php.php?ident={ID}&codes={CODE}DATAS=',
+            'validation' => 'http://script.starpass.fr/check_php.php?ident={KEY}&codes={CODE}DATAS=',
             'idp'        => env('PAYMENT_PUBLIC', 0),
             'idd'        => env('PAYMENT_PRIVATE', 0),
         ],
