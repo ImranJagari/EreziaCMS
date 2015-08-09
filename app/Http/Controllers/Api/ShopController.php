@@ -294,28 +294,28 @@ class ShopController extends ApiController
     {
         $article = new \stdClass;
 
-        $article->id =             "{$object->id}";
-        $article->key =            $object->key;
-        $article->name =           $object->name;
-        $article->subtitle =       $object->subtitle;
-        $article->description =    $object->description;
+        $article->id          = "{$object->id}";
+        $article->key         = $object->key;
+        $article->name        = $object->name;
+        $article->subtitle    = $object->subtitle;
+        $article->description = $object->description;
 
         if ($object->promo < 0)
         {
-            $article->price =          $object->price + $object->promo;
+            $article->price          = $object->price + $object->promo;
             $article->original_price = $object->price;
         }
         else
         {
-            $article->price =          $object->price;
+            $article->price          = $object->price;
             $article->original_price = null;
         }
 
-        $article->startdate =      $object->startdate;
-        $article->enddate =        null;
-        $article->currency =       "OGR";
-        $article->stock =          null;
-        $article->image =          new \stdClass;
+        $article->startdate = $object->startdate;
+        $article->enddate   = null;
+        $article->currency  = "OGR";
+        $article->stock     = null;
+        $article->image     = new \stdClass;
 
         $article->image->{'70_70'}   = false;
         $article->image->{'200_200'} = false;
@@ -350,8 +350,8 @@ class ShopController extends ApiController
     {
         $data = new \stdClass;
 
-        $data->result = true;
-        $data->gondolaheads = array();
+        $data->result       = true;
+        $data->gondolaheads = [];
 
         return $data;
     }
