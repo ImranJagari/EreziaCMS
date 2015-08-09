@@ -18,6 +18,8 @@ return array(
 
     'account.register' => 'inscription',
 
+    'account.dashboard' => 'profile',
+
     'account.login' => 'compte/connexion',
 
     'account.logout' => 'compte/deconnexion',

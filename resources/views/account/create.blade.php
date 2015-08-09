@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="block-body">
-                            {!! Form::open(array('action' => 'AccountController@store')) !!}
+                            {!! Form::open(['route' => 'register']) !!}
                                 <div class="form-group">
                                     <label for="username">Nom de compte*</label>
                                     <input id="username" type="text" autocorrect="off" autocapitalize="off" placeholder="Nom de compte" name="username" value="{{ Input::old('username') }}" @if ($errors->has('username')) class="has-error" @endif />

@@ -12,7 +12,7 @@ class AccountController extends Controller
 {
     public function create()
     {
-        return view('accounts.create');
+        return view('account.create');
     }
 
     public function store(Request $request)
@@ -47,19 +47,9 @@ class AccountController extends Controller
         return redirect()->route('home');
     }
 
-    public function show($id)
+    public function dashboard()
     {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update($id)
-    {
-        //
+        return view('account.dashboard');
     }
 
     private function GenerateTicket()

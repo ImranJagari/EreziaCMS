@@ -42,11 +42,24 @@ $router->group(['prefix' => $locale], function() {
 
 	/* ACCOUNTS */
 
-	Route::resource('accounts', 'AccountController'); // NEED ONLY ARRAY
+	//Route::resource('accounts', 'AccountController'); // NEED ONLY ARRAY
 
 	Route::get(Lang::get('routes.account.register'), [
+		'middleware' => 'guest',
 		'uses' => 'AccountController@create',
 		'as'   => 'register'
+	]);
+
+	Route::post(Lang::get('routes.account.register'), [
+		'middleware' => 'guest',
+		'uses' => 'AccountController@store',
+		'as'   => 'register'
+	]);
+
+	Route::get(Lang::get('routes.account.dashboard'), [
+		'middleware' => 'auth',
+		'uses' => 'AccountController@dashboard',
+		'as'   => 'dashboard'
 	]);
 
 	/* AUTH */

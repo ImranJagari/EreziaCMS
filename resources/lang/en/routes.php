@@ -18,6 +18,8 @@ return array(
 
     'account.register' => 'register',
 
+    'account.dashboard' => 'dashboard',
+
     'account.login' => 'auth/login',
 
     'account.logout' => 'auth/logout',

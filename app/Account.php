@@ -84,4 +84,8 @@ class Account extends Model implements AuthenticatableContract {
 			return false;
 	}
 
+	public function transactions()
+	{
+		return $this->hasMany('App\Transaction', 'account', 'Id')->orderBy('date', 'desc');
+	}
 }
