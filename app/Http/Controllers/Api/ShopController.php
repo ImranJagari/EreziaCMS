@@ -32,16 +32,16 @@ class ShopController extends ApiController
             return $this->softError("KEY_UNKNOWN");
         }
 
-            if (@$req->method == "Home")           return $this->Home();
-        elseif (@$req->method == "ArticlesList")   return $this->ArticlesList();
-        elseif (@$req->method == "QuickBuy")       return $this->QuickBuy();
-        elseif (@$req->method == "ArticlesSearch") return $this->ArticlesSearch();
+            if (@$req->method == "Home")           return $this->getHome();
+        elseif (@$req->method == "ArticlesList")   return $this->getArticlesList();
+        elseif (@$req->method == "QuickBuy")       return $this->buyArticle();
+        elseif (@$req->method == "ArticlesSearch") return $this->searchForArticles();
         else return $this->softError("Method not found");
     }
 
     ////////// Shop page //////////
 
-    private function Home()
+    private function getHome()
     {
         $req = $this->input();
 
@@ -50,7 +50,7 @@ class ShopController extends ApiController
         return $this->result($result);
     }
 
-    private function ArticleList()
+    private function getArticlesList()
     {
         $req        = $this->input();
         $categoryId = @$req->params[2];
@@ -66,7 +66,7 @@ class ShopController extends ApiController
         }
     }
 
-    private function QuickBuy()
+    private function buyArticle()
     {
         $req    = $this->input();
         $itemId = @$req->params[2];
@@ -82,7 +82,7 @@ class ShopController extends ApiController
         }
     }
 
-    private function ArticleSearch()
+    private function searchForArticles()
     {
         $req   = $this->input();
         $query = @$req->params[2];
@@ -239,7 +239,7 @@ class ShopController extends ApiController
 
         $data->result = true;
         $data->categories = [];
-        $data->categories[] = $this->categories_categorie(self::MAIN_SHOP_ID, "SHOP_HOME", "Boutique " config('dofus.title'));
+        $data->categories[] = $this->category(self::MAIN_SHOP_ID, "SHOP_HOME", "Boutique " . config('dofus.title'));
 
         return $data;
     }
@@ -261,13 +261,13 @@ class ShopController extends ApiController
         foreach ($childs as $child)
         {
             if ($child->parent == 0)
-                $categorie->child[] = $this->categories_categorie_child($child);
+                $categorie->child[] = $this->child($child);
         }
 
         return $categorie;
     }
 
-    private function child()
+    private function child($currentChild)
     {
         $categorie = new \stdClass;
 
@@ -284,7 +284,7 @@ class ShopController extends ApiController
 
         foreach ($childs as $child)
         {
-            $categorie->child[] = $this->categories_categorie_child($child);
+            $categorie->child[] = $this->child($child);
         }
 
         return $categorie;
@@ -364,15 +364,18 @@ class ShopController extends ApiController
         $content->count    = 0;
         $content->articles = [];
 
+        // TODO add limit to 6
         $objects = Object::where('featured', 1)->where('enabled', 1)->get();
 
         foreach ($objects as $object)
         {
-            $article = $this->createArticle($object);
+            $article = $this->article($object);
 
             $content->articles[] = $article;
             $content->count++;
         }
+
+        return $content;
     }
 
     private function hightlight_carousel()

