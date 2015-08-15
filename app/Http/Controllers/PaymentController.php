@@ -8,18 +8,14 @@ use App\Http\Controllers\Controller;
 use Validator;
 use Auth;
 use App\Transaction;
-
 use App\Services\Payment\DediPass;
 use App\Services\Payment\OneoPay;
 use App\Services\Payment\Starpass;
+use App\Shop\ShopStatus;
 
 class PaymentController extends Controller
 {
     private $payment;
-
-    const PAYMENT_SUCCESS = 0;
-    const PAYMENT_FAIL    = 1;
-    const PAYMENT_ERROR   = 2;
 
     public function __construct()
     {
@@ -130,7 +126,7 @@ class PaymentController extends Controller
         {
             $transaction = [
                 'account'     => Auth::user()->Id,
-                'state'       => self::PAYMENT_ERROR,
+                'state'       => ShopStatus::PAYMENT_ERROR,
                 'code'        => $data['code'],
                 'points'      => 0,
                 'country'     => $data['country'],
@@ -147,7 +143,7 @@ class PaymentController extends Controller
             {
                 $transaction = [
                     'account'     => Auth::user()->Id,
-                    'state'       => self::PAYMENT_SUCCESS,
+                    'state'       => ShopStatus::PAYMENT_SUCCESS,
                     'code'        => $validation->code,
                     'points'      => $validation->points,
                     'country'     => $validation->country,
@@ -167,7 +163,7 @@ class PaymentController extends Controller
             {
                 $transaction = [
                     'account'     => Auth::user()->Id,
-                    'state'       => self::PAYMENT_FAIL,
+                    'state'       => ShopStatus::PAYMENT_FAIL,
                     'code'        => $validation->code,
                     'points'      => 0,
                     'country'     => $data['country'],
