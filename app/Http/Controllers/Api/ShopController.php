@@ -364,8 +364,7 @@ class ShopController extends ApiController
         $content->count    = 0;
         $content->articles = [];
 
-        // TODO add limit to 6
-        $objects = Object::where('featured', 1)->where('enabled', 1)->get();
+        $objects = Object::where('featured', 1)->where('enabled', 1)->take(6)->get();
 
         foreach ($objects as $object)
         {
