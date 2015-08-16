@@ -35,7 +35,7 @@
             <div class="account-details">
                 <div class="account-name">{{ Auth::user()->Nickname }}</div>
                 <div class="account-info">
-                    <a href="{{ URL::route('dashboard') }}">Modifier mon compte</a>
+                    <a href="{{ URL::route('dashboard') }}">Gestion de compte</a>
                     <div style="margin-top: 5px;">
                         Ogrines: {{ Utils::format_price(Auth::user()->Tokens) }}<span class="icon-small icon-ogrines"></span><br />
                         <a href="{{ URL::route('shop.payment.country') }}"><i>Acheter des ogrines</i></a>

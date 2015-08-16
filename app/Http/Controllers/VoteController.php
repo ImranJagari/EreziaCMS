@@ -73,7 +73,7 @@ class VoteController extends Controller
         $votesCount = $this->userVotes();
         $progress   = $this->progressBar($id);
         $steps      = $this->stepsList($id);
-        $current    = 5;
+        $current    = 1;
 
         $data = array(
             "palierId" => $id,

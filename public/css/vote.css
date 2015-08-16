@@ -233,11 +233,11 @@
     width: 52px;
     height: 44px;
     display: block;
-    margin: 5px 0 10px;
+    margin: 10px 0 10px;
     background: url('../imgs/gift_little.png') center center no-repeat;
 }
 
-#vote-gifts .vote-reward-icon.big {
+#vote-gifts .vote-block-5 .vote-reward-icon {
     background-image: url('../imgs/gift_big.png');
 }
 
