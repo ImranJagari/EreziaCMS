@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
-    <title>{{ config('dofus.title') }} - Serveur 2.29</title>
+    <title>{{ config('dofus.title') }} - {{ config('dofus.subtitle') }}</title>
     <link rel="icon" type="image/png" href="{{ URL::asset('imgs/favicon.png') }}" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald" type="text/css" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto" type="text/css" />
@@ -35,7 +35,7 @@
 
 @if (empty($no_carousel))
     <div id="carousel">
-@if (config('dofus.theme'))
+@if (config('dofus.theme') && config('dofus.carousel'))
         <video class="video" poster="{{ URL::asset('imgs/carousel/'.config('dofus.theme').'/preview.png') }}" loop="loop" autoplay="">
             <source src="{{ URL::asset('imgs/carousel/'.config('dofus.theme').'/video.mp4') }}" type="video/mp4">
             <source src="{{ URL::asset('imgs/carousel/'.config('dofus.theme').'/video.webm') }}" type="video/webm">

@@ -4,9 +4,13 @@ return [
 
     'title' => env('TITLE', 'ServerName'),
 
+    'subtitle' => env('SUBTITLE', 'SubTitle'),
+
     'template' => env('TEMPLATE', 'dofus'),
 
     'theme' => env('THEME', false),
+
+    'carousel' => env('CAROUSEL', false),
 
     'vote' => 10,
 
