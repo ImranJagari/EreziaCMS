@@ -49,6 +49,7 @@ return [
 		'web' => [
 			'driver'    => 'mysql',
 			'host'      => env('DB_WEB_HOST', ''),
+			'port'      => env('DB_WEB_PORT', ''),
 			'database'  => env('DB_WEB_DATABASE', ''),
 			'username'  => env('DB_WEB_USERNAME', ''),
 			'password'  => env('DB_WEB_PASSWORD', ''),
@@ -61,6 +62,7 @@ return [
 		'auth' => [
 			'driver'    => 'mysql',
 			'host'      => env('DB_AUTH_HOST', ''),
+			'port'      => env('DB_AUTH_PORT', ''),
 			'database'  => env('DB_AUTH_DATABASE', ''),
 			'username'  => env('DB_AUTH_USERNAME', ''),
 			'password'  => env('DB_AUTH_PASSWORD', ''),
@@ -73,6 +75,7 @@ return [
 		'world' => [
 			'driver'    => 'mysql',
 			'host'      => env('DB_WORLD_HOST', ''),
+			'port'      => env('DB_WORLD_PORT', ''),
 			'database'  => env('DB_WORLD_DATABASE', ''),
 			'username'  => env('DB_WORLD_USERNAME', ''),
 			'password'  => env('DB_WORLD_PASSWORD', ''),
