@@ -6,12 +6,13 @@
     <link rel="icon" type="image/png" href="{{ URL::asset('imgs/favicon.png') }}" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald" type="text/css" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto" type="text/css" />
-    {!! Html::style('css/style.css') !!}
+    {!! Html::style('css/app.css') !!}
+    <!--{!! Html::style('css/style.css') !!}
     {!! Html::style('css/icons.css') !!}
 @if (config('dofus.theme'))
     {!! Html::style('imgs/carousel/'.config('dofus.theme').'/style.css') !!}
 @endif
-@yield('header')
+@yield('header')-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <body>

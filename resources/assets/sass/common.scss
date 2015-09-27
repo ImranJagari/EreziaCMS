@@ -1,0 +1,88 @@
+body, div {
+    margin: 0 auto;
+    padding: 0;
+}
+
+body {
+    font: {
+        size: 15px;
+        family: 'Roboto', Arial, Helvetica, sans-serif;
+    }
+    background: {
+        image: url("../imgs/backgrounds/dofus5.jpg");
+        repeat: no-repeat;
+        color: #180A01;
+        position: center top;
+        attachment: scroll;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    vertical-align: middle;
+    border: 0px none;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: #23a9b5;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    overflow: visible;
+}
+
+.container {
+    width: $content-width;
+    height: auto;
+    overflow: auto;
+}
+
+.container:after {
+    clear: both;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.disabled {
+    opacity: .4;
+}
+
+.hr {
+    height: 0px;
+    margin: 20px 0;
+    display: block;
+    border: {
+        right: 0px none;
+        width: 1px 0px 0px;
+        style: solid none none;
+        color: #C9C6BB;
+        image: none;
+    }
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bebas Neue'),
+         url('../fonts/BebasNeue.woff') format('woff'),
+         url('../fonts/BebasNeue.otf') format('truetype');
+}

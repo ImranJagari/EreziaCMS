@@ -3,5 +3,8 @@
   "devDependencies": {
     "gulp": "^3.8.8",
     "laravel-elixir": "*"
+  },
+  "dependencies": {
+    "laravel-elixir-sass-compass": "^0.4.0"
   }
 }
